@@ -12,14 +12,14 @@ The site has been restored to the previous visual design while keeping it static
 | --- | --- |
 | Static HTML routes | Preserve the original route structure and page markup needed by the design. |
 | `assets/media/` | Local migrated uploads and project imagery. |
-| `assets/vendor/` | Local static The7, Elementor, Pro Elements, The7 Core, and WordPress browser-runtime assets required for visual fidelity. |
+| `assets/vendor/` | Reachable static The7, Elementor, Pro Elements, The7 Core, and WordPress browser-runtime assets required for visual fidelity. |
 | `assets/css/generated/` | CSS externalized from inline export blocks. |
 | `assets/js/generated/` | JS config/runtime snippets externalized from inline export blocks. |
 | `assets/css/static-site.css` | Small static-only accessibility/form helper styles. |
 | `assets/js/static-site.js` | Small static-only form fallback script. |
 | `assets/js/analytics.js` | Site-wide Google Analytics loader. |
-| `scripts/rebuild-visual-static.mjs` | Rebuilds the visual-preserving static export from restored source files. |
-| `scripts/validate-site.mjs` | Validates page count, local assets, and removed WordPress backend references. |
+| `scripts/rebuild-visual-static.mjs` | Rebuilds the visual-preserving static export and preserves existing generated assets when run on an already-static checkout. |
+| `scripts/validate-site.mjs` | Validates page count, HTML/CSS/JS asset references, and removed WordPress backend references. |
 
 ## Removed Runtime Dependencies
 
@@ -29,6 +29,7 @@ The site has been restored to the previous visual design while keeping it static
 - No PHP or live WordPress server is required.
 - The old icon demo HTML route was removed.
 - The default WordPress sample page was removed.
+- Unreachable migrated media and vendor files were pruned after an asset reachability check.
 
 ## Visual Fidelity Note
 

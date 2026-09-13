@@ -215,11 +215,6 @@ gtag('config', 'G-MPPC8HMV6S');
 }
 
 async function main() {
-  await fs.rm(generatedCssDir, { recursive: true, force: true });
-  await fs.rm(generatedJsDir, { recursive: true, force: true });
-  await fs.mkdir(generatedCssDir, { recursive: true });
-  await fs.mkdir(generatedJsDir, { recursive: true });
-
   for (const [from, to] of assetCopies) {
     await copyDir(from, to);
   }
@@ -233,6 +228,21 @@ async function main() {
     .filter((file) => file.endsWith('.html'))
     .filter((file) => !path.relative(root, file).replaceAll(path.sep, '/').startsWith('wp-content/'))
     .filter((file) => !path.relative(root, file).replaceAll(path.sep, '/').startsWith('sample-page/'));
+
+  const alreadyExternalized = (await Promise.all(
+    htmlFiles.map(async (file) => {
+      const html = await fs.readFile(file, 'utf8');
+      return html.includes('/assets/css/generated/') || html.includes('/assets/js/generated/');
+    })
+  )).some(Boolean);
+
+  if (!alreadyExternalized) {
+    await fs.rm(generatedCssDir, { recursive: true, force: true });
+    await fs.rm(generatedJsDir, { recursive: true, force: true });
+  }
+
+  await fs.mkdir(generatedCssDir, { recursive: true });
+  await fs.mkdir(generatedJsDir, { recursive: true });
 
   for (const file of htmlFiles) {
     let html = await fs.readFile(file, 'utf8');

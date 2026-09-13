@@ -16,6 +16,9 @@ Date: 2026-09-13
 - Externalized inline style/script blocks into `assets/css/generated/` and `assets/js/generated/`.
 - Added site-wide Google Analytics through `assets/js/analytics.js`.
 - Removed the WordPress sample page and icon demo HTML.
+- Pruned unreachable migrated media and vendor files while keeping the existing public route structure.
+- Made `npm run build` idempotent for the current static checkout and chained validation after rebuilds.
+- Expanded validation to follow HTML, CSS, JS, SVG, responsive image, and escaped asset references.
 
 ## Verification
 
@@ -30,7 +33,7 @@ Current validation result:
 - `htmlFiles`: 32
 - `errors`: 0
 
-Representative local HTTP checks returned `200` for home, contact, news, project, category, article, vendor CSS, vendor JS, generated CSS, generated JS, and analytics assets.
+Representative local HTTP checks returned `200` for home, contact, project, vendor CSS, static helper JS, Lottie JSON, and migrated media assets.
 
 ## Notes
 
