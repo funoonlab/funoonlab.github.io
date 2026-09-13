@@ -1,0 +1,24 @@
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #025373;
+  outline-offset: 3px;
+}
+
+.static-form-message {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid #9ad8c0;
+  border-radius: 6px;
+  background: #f3fbf8;
+  color: #0b0f1f;
+  font-family: Manrope, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.static-form-message[hidden] {
+  display: none;
+}

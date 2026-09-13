@@ -1,0 +1,6 @@
+@media screen and (max-width: 989px) {
+																.elementor-widget-the7_horizontal-menu.elementor-widget {
+																	--menu-display: none;
+																	--mobile-display: inline-flex;
+																}
+															}
