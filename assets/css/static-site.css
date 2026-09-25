@@ -19,6 +19,11 @@ select:focus-visible {
   line-height: 1.5;
 }
 
+.static-form-message--error {
+  border-color: #f0b4b4;
+  background: #fdf3f3;
+}
+
 .static-form-message[hidden] {
   display: none;
 }
